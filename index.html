@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chill Pulse</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Fullscreen background image -->
+    <div class="bg-image"></div>
+    <img class="window-image" src="pink.jpeg">
+    <div class="container">
+        <!-- 투두 아이콘-->
+        <div class="todo-button">
+            <i class="fas fa-tasks"></i>
+        </div>
+
+        <!-- 투두리스트 창 -->
+        <div class="todo-panel">
+            <div class="todo-header">
+                <h2>To-Do List</h2>
+                <button class="close-btn">×</button>
+            </div>
+            <div class="todo-content">
+                <div class="todo-input">
+                    <input type="text" id="todoInput" placeholder="Add a new task...">
+                    <button id="addTodo"><i class="fas fa-plus"></i></button>
+                </div>
+                <ul id="todoList"></ul>
+            </div>
+        </div>
+
+        <!-- 타이머 아이콘 -->
+        <div id="timer-fab" style="position:fixed;bottom:30px;right:100px;z-index:130;">
+            <button id="open-timer-btn" style="width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,0.15);border:none;display:flex;align-items:center;justify-content:center;font-size:24px;color:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.12);cursor:pointer;">
+                <i class="fas fa-stopwatch"></i>
+            </button>
+        </div>
+
+        <!-- 타이머 창-->
+        <div id="timer-panel" style="position:fixed;bottom:90px;right:100px;width:320px;opacity:0;pointer-events:none;transform:translateY(30px);transition:opacity 0.3s,transform 0.3s;z-index:120;">
+            <div style="background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);border-radius:10px;padding:20px;">
+                <div id="pomodoro-timer-content">
+                    <div class="timer-header">
+                        <h3>Pomodoro Timer</h3>
+                        <button id="timer-settings-btn" class="settings-btn"><i class="fas fa-cog"></i></button>
+                    </div>
+                    <div class="timer-circle-wrapper">
+                        <svg class="timer-circle" width="160" height="160">
+                            <circle cx="80" cy="80" r="74" stroke="#444" stroke-width="8" fill="none"/>
+                            <circle id="timerProgress" cx="80" cy="80" r="74" stroke="#4CAF50" stroke-width="8" fill="none" stroke-linecap="round"/>
+                        </svg>
+                        <div class="timer-display">
+                            <span id="minutes">25</span>:<span id="seconds">00</span>
+                        </div>
+                    </div>
+                    <div class="timer-controls">
+                        <button id="startTimer"><i class="fas fa-play"></i></button>
+                        <button id="resetTimer"><i class="fas fa-redo"></i></button>
+                    </div>
+                    <div class="timer-settings">
+                        <div class="setting-item">
+                            <label>Work Time (min)</label>
+                            <input type="number" id="workTime" value="25" min="1" max="60">
+                        </div>
+                        <div class="setting-item">
+                            <label>Break Time (min)</label>
+                            <input type="number" id="breakTime" value="5" min="1" max="30">
+                        </div>
+                        <div class="setting-item">
+                            <label>Repeat Count</label>
+                            <input type="number" id="repeatCount" value="4" min="1" max="12">
+                        </div>
+                        <button id="saveSettings">Save</button>
+                    </div>
+                    <div class="timer-rounds">
+                        <span>Round: <span id="currentRound">1</span>/<span id="totalRounds">4</span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 음악 -->
+        <div class="music-player">
+            <div class="music-info">
+                <h3>Now Playing</h3>
+                <p id="songTitle">No song selected</p>
+            </div>
+            <div class="player-controls">
+                <button id="prevBtn"><i class="fas fa-backward"></i></button>
+                <button id="playBtn"><i class="fas fa-play"></i></button>
+                <button id="nextBtn"><i class="fas fa-forward"></i></button>
+            </div>
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>
